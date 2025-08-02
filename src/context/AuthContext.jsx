@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../servise/api'; // Make sure this path matches your directory structure
+import api from '../services/api'; // Make sure this path matches your directory structure
 
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
