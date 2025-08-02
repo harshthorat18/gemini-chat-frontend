@@ -1,10 +1,9 @@
 // AuthContext.jsx
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../services/api';
+import api from '../servise/api'; // Make sure this path matches your directory structure
 
 const AuthContext = createContext();
-
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
@@ -32,7 +31,7 @@ export const AuthProvider = ({ children }) => {
       setUser(user);
       localStorage.setItem('token', token);
       return { success: true };
-    } catch (err) {
+    } catch (err) => {
       return {
         success: false,
         message: err.response?.data?.message || 'Login failed',
