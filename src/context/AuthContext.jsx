@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      api.get('/user/me')
+      api.get('/api/user/me')
         .then((res) => setUser(res.data))
         .catch(() => logout())
         .finally(() => setLoading(false));
@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await api.post('/auth/login', { email, password });
+      const res = await api.post('/api/auth/login', { email, password });
       const { token, user } = res.data;
       setToken(token);
       setUser(user);
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password) => {
     try {
-      await api.post('/auth/register', { name, email, password });
+      await api.post('/api/auth/register', { name, email, password });
       return { success: true, message: 'Registration successful' };
     } catch (err) {
       return {
